@@ -1,4 +1,4 @@
-from selenium import webdriver
+﻿from selenium import webdriver
 import time
 
 link = "http://selenium1py.pythonanywhere.com/ru/"
@@ -15,9 +15,10 @@ def check_basket_2():
     ОР:
     Под заголовком “Все товары” появляется сообщение: “%itemname% был добавлен в вашу корзину”
     """
-
+    browser = None
     try:
         browser = webdriver.Chrome()
+        browser.set_window_size(width=1366, height=768)
         browser.get(link)
 
         browser.find_element_by_xpath("//ul[@id='browse']//a[contains(text(),'Все товары')]").click()
@@ -36,7 +37,7 @@ def check_basket_2():
 
     finally:
         time.sleep(1)
-        browser.quit()
+        browser.close()
 
 def check_basket_1():
     """
@@ -54,9 +55,10 @@ def check_basket_1():
     Книги
     Предложения
     """
-
+    browser = None
     try:
         browser = webdriver.Chrome()
+        browser.set_window_size(width=1366, height=768)
         browser.get(link)
 
         browser.find_element_by_xpath("//select[contains(@name,'language')]").click()
@@ -69,25 +71,25 @@ def check_basket_1():
         browser.find_element_by_xpath("//a[contains(@class,'dropdown-toggle')]").click()
         #3. Кликаем в главном меню “Просмотр магазина”
 
-        catalog_all_items = browser.find_element_by_xpath("//ul[@id='browse']//ul//li[1]")
+        catalog_all_items = browser.find_element_by_xpath("//ul[@id='browse']//a[@href='/ru/catalogue/']")
         catalog_all_items = catalog_all_items.text
         assert catalog_all_items == "Все товары", \
             f"Wrong language, got {catalog_all_items} instead of 'Все товары'"
         #Проверка "Все товары" в списке меню на русском языке
 
-        catalog_clothing = browser.find_element_by_xpath("//ul[@id='browse']//ul//li[3]")
+        catalog_clothing = browser.find_element_by_xpath("//ul[@id='browse']//a[@href='/ru/catalogue/category/clothing_1/']")
         catalog_clothing = catalog_clothing.text
         assert catalog_clothing == "Одежда", \
             f"Wrong language, got {catalog_clothing} instead of 'Одежда'"
         #Проверка "Одежда" в списке меню на русском языке
 
-        catalog_books = browser.find_element_by_xpath("//ul[@id='browse']//ul//li[4]")
+        catalog_books = browser.find_element_by_xpath("//ul[@id='browse']//a[@href='/ru/catalogue/category/books_2/']")
         catalog_books = catalog_books.text
         assert catalog_books == "Книги", \
             f"Wrong language, got {catalog_books} instead of 'Книги'"
         #Проверка "Книги" в списке меню на русском языке
 
-        catalog_offers = browser.find_element_by_xpath("//ul[@id='browse']//ul//li[6]")
+        catalog_offers = browser.find_element_by_xpath("//ul[@id='browse']//a[@href='/ru/offers/']")
         catalog_offers = catalog_offers.text
         assert catalog_offers == "Предложения", \
             f"Wrong language, got {catalog_offers} instead of 'Предложения'"
@@ -97,7 +99,7 @@ def check_basket_1():
         # успеваем скопировать код за 10 секунд
         time.sleep(1)
         # закрываем браузер после всех манипуляций
-        browser.quit()
+        browser.close()
 
 def check_basket_5():
     """
@@ -110,16 +112,17 @@ def check_basket_5():
     6. Кликаем кнопку “Зарегистрироваться”
     OP
     Появление всплывающего сообщения в поле “Адрес электронной почты” с текстом: “Некорректный электронный адрес. Отсутствует @”
-
     """
 
+    browser = None
     try:
 
         browser = webdriver.Chrome()
+        browser.set_window_size(width=1366, height=768)
         browser.get(link)
         browser.find_element_by_id("login_link").click()
 
-        browser.find_element_by_xpath("//form[@id='register_form']//h2[contains(text(),'Зарегистрироваться')]" )
+        browser.find_element_by_xpath("//form[@id='register_form']//h2[contains(text(),'Зарегистрироваться')]")
         # 1. Кликаем по ссылке “Войти или зарегистрироваться”
 
         confirmation_registration_text = browser.find_element_by_xpath("//form[@id='register_form']//h2[contains(text(),'Зарегистрироваться')]")
@@ -145,8 +148,8 @@ def check_basket_5():
         # не получается нагуглить, как проводить валидацию тултипов =/
 
     finally:
-        time.sleep( 3 )
-        browser.quit()
+        time.sleep(3)
+        browser.close()
 
 def check_basket_4():
     """
@@ -165,9 +168,10 @@ def check_basket_4():
 
     Появление всплывающего сообщения в поле “Адрес электронной почты” с текстом: “Некорректный электронный адрес. Отсутствует @”
     """
-
+    browser = None
     try:
         browser = webdriver.Chrome()
+        browser.set_window_size(width=1366, height=768)
         browser.get(link)
         browser.find_element_by_xpath("//a[contains(@class,'dropdown-toggle')]").click()
         #1. Кликаем в главном меню “Просмотр магазина”
@@ -206,11 +210,12 @@ def check_basket_4():
 
     finally:
         time.sleep(1)
-        browser.quit()
+        browser.close()
 
 def check_basket_3():
     """
-    III. При добавлении товара с типом Книга в корзину из карточки товара, под навигационной цепочкой появляется сообщение %itemname% был добавлен в вашу корзину
+    III. При добавлении товара с типом Книга в корзину из карточки товара, под навигационной цепочкой
+    появляется сообщение %itemname% был добавлен в вашу корзину
 
     Шаги:
     1.Кликаем “Просмотр магазина” в главном меню
@@ -220,8 +225,10 @@ def check_basket_3():
     ОР:
     Под заголовком “Все товары” появляется сообщение: %itemname% был добавлен в вашу корзину
     """
+    browser = None
     try:
         browser = webdriver.Chrome()
+        browser.set_window_size(width=1366, height=768)
         browser.get(link)
         browser.find_element_by_xpath("//a[contains(@class,'dropdown-toggle')]").click()
         #1. Кликаем в главном меню “Просмотр магазина”
@@ -240,7 +247,7 @@ def check_basket_3():
 
     finally:
         time.sleep(1)
-        browser.quit()
+        browser.close()
 
 if __name__ == "__main__":
     check_basket_2()
@@ -248,3 +255,4 @@ if __name__ == "__main__":
     check_basket_4()
     check_basket_5()
     check_basket_1()
+    browser.quit()
