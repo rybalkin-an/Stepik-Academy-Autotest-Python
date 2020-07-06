@@ -1,2 +1,2 @@
 # Stepik-Academy-Autotest-Python
-Stepik Academy. Автоматизация тестирования на Python.
+:mortar_board: Stepik Academy. Автоматизация тестирования на Python.
