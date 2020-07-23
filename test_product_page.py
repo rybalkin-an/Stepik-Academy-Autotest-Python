@@ -5,7 +5,7 @@ from test_login_page import test_user_can_register
 
 @pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
-    link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/"
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
     product_page = ProductPage(browser, link)
     product_page.open()
     product_page.product_can_be_added_to_basket()
@@ -13,7 +13,7 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
 
 @pytest.mark.need_review
 def test_guest_can_add_product_to_basket(browser):
-    link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/"
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
     product_page = ProductPage(browser, link)
     product_page.open()
     product_page.should_be_add_to_basket_button()
@@ -23,7 +23,7 @@ def test_guest_can_add_product_to_basket(browser):
 @pytest.mark.need_review
 def test_user_can_add_product_to_basket(browser):
     test_user_can_register(browser)
-    product_link = "http://selenium1py.pythonanywhere.com/ru/catalogue/coders-at-work_207/"
+    product_link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
     product_page = ProductPage(browser, product_link)
     product_page.open()
     product_page.should_be_add_to_basket_button()
