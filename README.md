@@ -1,7 +1,7 @@
 ## :mortar_board: [Stepik Academy](https://stepik.org/org/stepikteam/) Автоматизация тестирования на Python
 
 
-Запуск тестов выполняется через командную строку командами:
+Запуск тестов выполняется в командной строке:
 ```
 pytest -v --tb=line --language=en --alluredir=allure_report -m need_review
 pytest -v --tb=line --language=en --alluredir=allure_report -m need_review_custom_scenarios
