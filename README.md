@@ -1,4 +1,5 @@
-## :mortar_board: Stepik Academy. Автоматизация тестирования на Python.
+## :mortar_board: [Stepik Academy](https://stepik.org/org/stepikteam/) Автоматизация тестирования на Python
+
 
 Запуск тестов выполняется через командную строку командами:
 ```
