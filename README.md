@@ -6,9 +6,9 @@
 pytest -v --tb=line --language=en --alluredir=allure_report -m need_review 
 pytest -v --tb=line --language=en --alluredir=allure_report -m need_review_custom_scenarios
 ```
-Для отчета Allure выполнить команду:
+Для генерации отчета Allure выполнить команду:
 ```
-allure serve allure_report
+allure serve /path/to/allure-reports/
 ```
 
 ## Built With
