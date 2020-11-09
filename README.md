@@ -8,7 +8,7 @@ pytest -v --tb=line --language=en --alluredir=allure_report -m need_review_custo
 ```
 Для генерации отчета Allure выполнить команду:
 ```
-allure serve /path/to/allure-reports/
+allure serve /path_to/allure_report/
 ```
 
 ## Built With
